@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+/**
+ * @file styles.css
+ * @description Estilos globais e configurações de tema para Tailwind v4.
+ * @author Felipe Nascimento
+ * @version 1.0.0
+ */
+
+ 
+@import "tailwindcss";
+
+@theme {
+  /* Definindo as Keyframes (o movimento) */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0) rotate(12deg); }
+    50% { transform: translateY(-15px) rotate(12deg); }
+  }
+
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Criando as classes utilitárias de animação */
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-spin-slow: spin-slow 12s linear infinite;
+  --animate-bounce-slow: bounce-slow 4s ease-in-out infinite;
+  --animate-gradient: gradient 3s ease infinite;
+}

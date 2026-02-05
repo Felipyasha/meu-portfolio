@@ -1,0 +1,108 @@
+<section
+  class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden px-6"
+>
+  <div
+    class="absolute top-1/4 -right-20 w-64 h-64 bg-red-700/10 rounded-full blur-[100px] pointer-events-none"
+  ></div>
+  <div
+    class="absolute bottom-1/4 -left-20 w-48 h-48 bg-red-700/5 rounded-full blur-[80px] pointer-events-none"
+  ></div>
+
+  <div class="container mx-auto px-6 mt-20 pb-20 md:pb-0">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center transition-opacity duration-500 ease-in-out order-2 md:order-1"
+      [ngStyle]="{ opacity: isContentVisible ? '1' : '0' }"
+    >
+      <!-- Conteúdo de Texto -->
+      <div
+        class="flex flex-col space-y-4 md:space-y-6 text-center md:text-left order-2 md:order-1 slide-content"
+      >
+        <div class="flex items-center justify-center md:justify-start gap-2">
+          <div class="h-0.5 w-6 bg-red-700 shrink-0"></div>
+          <span
+            class="text-red-700 font-semibold text-sm md:text-lg tracking-wider uppercase whitespace-nowrap"
+          >
+            {{ currentSlide.role }}
+          </span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-tight">
+          <span class="block text-white">{{ currentSlide.greeting }}</span>
+
+          @if (!isFirstNameImage()) {
+            <span
+              class="block bg-gradient-to-r from-red-700 via-red-800 to-red-700/20 bg-clip-text text-transparent animate-gradient"
+              style="background-size: 200% 100%"
+            >
+              {{ getFirstNameText() }}
+            </span>
+          }
+
+          @if (isFirstNameImage()) {
+            <span class="flex justify-center md:justify-start my-4">
+              <img
+                [src]="getFirstNameImage()?.src"
+                [alt]="getFirstNameImage()?.alt"
+                class="max-h-16 md:max-h-24 w-auto object-contain"
+              />
+            </span>
+          }
+
+          <span class="block text-gray-300 text-3xl md:text-4xl font-medium mt-2">
+            {{ currentSlide.lastName }}
+          </span>
+        </h1>
+
+        <p
+          class="text-gray-400 text-base md:text-xl lg:text-2xl max-w-2xl leading-relaxed mx-auto md:mx-0"
+        >
+          {{ currentSlide.bio }}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-2 justify-center md:justify-start">
+          <button
+            class="px-6 py-3 bg-red-700 text-white text-xs font-bold rounded-sm hover:scale-105 transition-all uppercase tracking-widest"
+          >
+            Ver Projetos
+          </button>
+
+          <button
+            (click)="downloadCV()"
+            class="px-6 py-3 border border-red-700/50 text-white text-xs font-bold rounded-sm hover:bg-red-700 transition-all uppercase tracking-widest flex items-center justify-center gap-2"
+          >
+            <svg class="w-4 h-4 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            CV
+          </button>
+        </div>
+      </div>
+
+      <!-- Imagem do Perfil -->
+      <div
+        class="relative flex justify-center items-center scale-75 md:scale-90 lg:scale-100 order-1 md:order-2"
+      >
+        <div
+          class="relative w-64 h-64 md:w-80 md:h-80 lg:w-100 lg:h-100 animate-spin-slow pointer-events-none"
+        >
+          <div class="w-full h-full rounded-full p-1 bg-gradient-to-tr from-red-700 to-black"></div>
+        </div>
+
+        <div
+          class="absolute w-56 h-56 md:w-72 md:h-72 lg:w-95 lg:h-95 rounded-full bg-black overflow-hidden border-4 border-black z-10 slide-content"
+        >
+          <img
+            [src]="currentSlide.image"
+            [alt]="currentSlide.firstName"
+            class="w-full h-full object-cover scale-110"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

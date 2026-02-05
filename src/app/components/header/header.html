@@ -1,0 +1,73 @@
+<header class="fixed top-0 w-full bg-black/80 backdrop-blur-lg z-50 border-b border-red-700/30">
+  <div class="container mx-auto px-4 lg:px-10 py-4 md:py-5">
+    <div class="flex justify-between items-center">
+      <div class="hover:scale-110 transition-transform duration-300 cursor-pointer">
+        <img src="/images/felipyasha_header.png" alt="Logo da marca" class="w-28 md:w-32 lg:w-[140px] object-contain" />
+      </div>
+
+      <nav class="hidden md:flex space-x-4 lg:space-x-9 items-center">
+        @for (item of navItems; track item.label) {
+          <a
+            [href]="item.link"
+            (click)="setActive(item.label)"
+            class="relative h-10 flex items-center transition-colors duration-300 group hover:text-red-700 text-xs lg:text-base"
+            [class.text-red-700]="activeItem === item.label"
+            [class.text-gray-200]="activeItem !== item.label"
+          >
+            <span>{{ item.label }}</span>
+
+            <span
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-red-700 to-red-700/30 transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100"
+              [class.scale-x-100]="activeItem === item.label"
+            >
+            </span>
+          </a>
+        }
+        <button
+          class="ml-2 lg:ml-6 px-4 lg:px-6 py-2 border-2 border-red-700 text-red-700 font-black hover:bg-red-700 hover:text-white transition-all rounded-sm uppercase text-xs lg:text-sm"
+        >
+          CV
+        </button>
+      </nav>
+
+      <button (click)="toggleMenu()" class="md:hidden text-red-700/80 p-2 focus:outline-none z-50">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          @if (!isMenuOpen) {
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          } @else {
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          }
+        </svg>
+      </button>
+    </div>
+
+    @if (isMenuOpen) {
+      <div class="md:hidden mt-4 pb-4 border-t border-red-700/20">
+        <div class="flex flex-col space-y-4 pt-4">
+          @for (item of navItems; track item.label) {
+            <a
+              [href]="item.link"
+              (click)="setActive(item.label)"
+              class="relative text-center py-2 transition-all duration-300 flex flex-col items-center"
+              [class.text-red-700]="activeItem === item.label"
+              [class.text-white]="activeItem !== item.label"
+            >
+              {{ item.label }}
+              <span
+                class="h-0.5 bg-gradient-to-r from-red-700 to-red-700/20 transition-transform duration-500"
+                [class.w-full]="activeItem === item.label"
+                [class.w-0]="activeItem !== item.label"
+              >
+              </span>
+            </a>
+          }
+          <button
+            class="mt-4 px-12 py-4 border-2 border-red-700 text-red-700 font-black uppercase tracking-tighter hover:bg-red-700/95 hover:text-white transition-all"
+          >
+            Baixar CV
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</header>
