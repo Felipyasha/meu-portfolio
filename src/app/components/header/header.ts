@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
+export class Header implements OnInit {
   /** @description Controla a visibilidade do menu hambúrguer no mobile */
   isMenuOpen = false;
 
@@ -23,7 +23,7 @@ export class Header {
 
   /** @description Itens de navegação */
   navItems = [
-    { label: 'Início', link: '' },
+    { label: 'Início', link: '#' },
     { label: 'Sobre', link: '#about' },
     { label: 'Habilidades', link: '#skills' },
     { label: 'Projetos', link: '#projects' },
@@ -31,6 +31,45 @@ export class Header {
     { label: 'Formação', link: '#education' },
     { label: 'Contato', link: '#contact' },
   ];
+
+  ngOnInit(): void {
+    // Detecta a seção ativa ao carregar a página
+    this.updateActiveSection();
+  }
+
+  /** @description Detecta qual seção está visível no scroll */
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    this.updateActiveSection();
+  }
+
+  /** @description Atualiza o item ativo baseado na seção visível */
+  private updateActiveSection(): void {
+    const sections = this.navItems
+      .filter(item => item.link.startsWith('#') && item.link !== '#')
+      .map(item => ({
+        label: item.label,
+        element: document.getElementById(item.link.substring(1))
+      }))
+      .filter(section => section.element !== null);
+
+    const scrollPosition = window.scrollY + 150; // offset para compensar o header
+
+    // Se estiver no topo da página
+    if (window.scrollY < 100) {
+      this.activeItem = 'Início';
+      return;
+    }
+
+    // Encontra qual seção está visível
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = sections[i];
+      if (section.element && section.element.offsetTop <= scrollPosition) {
+        this.activeItem = section.label;
+        return;
+      }
+    }
+  }
 
   /** @description Inverte o estado do menu mobile */
   toggleMenu(): void {

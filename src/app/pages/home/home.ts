@@ -71,7 +71,10 @@ export class Home implements OnInit, OnDestroy {
    * @description Verifica se firstName é uma imagem
    */
   public isFirstNameImage(): boolean {
-    return typeof this.currentSlide.firstName === 'object' && this.currentSlide.firstName.type === 'image';
+    return (
+      typeof this.currentSlide.firstName === 'object' &&
+      this.currentSlide.firstName.type === 'image'
+    );
   }
 
   /**
@@ -112,7 +115,7 @@ export class Home implements OnInit, OnDestroy {
       // Fade out
       this.isContentVisible = false;
       this.cdr.detectChanges();
-      
+
       // Aguarda fade out completar, depois troca o slide e faz fade in
       setTimeout(() => {
         this.currentIndex = (this.currentIndex + 1) % this.slides.length;
@@ -127,6 +130,14 @@ export class Home implements OnInit, OnDestroy {
    * @description Navega ou executa a ação de baixar o currículo
    */
   public downloadCV(): void {
-    // Lógica de download entrará aqui
+    const link = document.createElement('a');
+  // Adicionamos a / para garantir que ele busque na raiz do site
+  link.href = '/docs/Felipe_Nascimento_DevFront_CV.pdf'; 
+  link.download = 'Felipe_Nascimento_DevFront_CV.pdf';
+  
+  // Adicionamos ao corpo do documento (necessário em alguns navegadores)
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
   }
 }

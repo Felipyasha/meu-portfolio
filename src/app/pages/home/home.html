@@ -1,14 +1,7 @@
 <section
-  class="relative min-h-screen flex items-center justify-center bg-black overflow-hidden px-6"
+  class="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden px-6"
 >
-  <div
-    class="absolute top-1/4 -right-20 w-64 h-64 bg-red-700/10 rounded-full blur-[100px] pointer-events-none"
-  ></div>
-  <div
-    class="absolute bottom-1/4 -left-20 w-48 h-48 bg-red-700/5 rounded-full blur-[80px] pointer-events-none"
-  ></div>
-
-  <div class="container mx-auto px-6 mt-20 pb-20 md:pb-0">
+  <div class="container mx-auto px-6 mt-20">
     <div
       class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center transition-opacity duration-500 ease-in-out order-2 md:order-1"
       [ngStyle]="{ opacity: isContentVisible ? '1' : '0' }"
@@ -31,7 +24,7 @@
 
           @if (!isFirstNameImage()) {
             <span
-              class="block bg-gradient-to-r from-red-700 via-red-800 to-red-700/20 bg-clip-text text-transparent animate-gradient"
+              class="block bg-linear-to-r from-red-700 via-red-800 to-red-700/20 bg-clip-text text-transparent italic uppercase animate-gradient"
               style="background-size: 200% 100%"
             >
               {{ getFirstNameText() }}
@@ -90,7 +83,7 @@
         <div
           class="relative w-64 h-64 md:w-80 md:h-80 lg:w-100 lg:h-100 animate-spin-slow pointer-events-none"
         >
-          <div class="w-full h-full rounded-full p-1 bg-gradient-to-tr from-red-700 to-black"></div>
+          <div class="w-full h-full rounded-full p-1 bg-linear-to-tr from-red-700 to-black"></div>
         </div>
 
         <div
