@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-
-
-
 
 export const routes: Routes = [
- // Apenas a rota raiz que carrega o componente pai (Home)
-  { path: '', component: Home },
-  
-  // Caso o usuário digite qualquer coisa errada, ele volta para a Home
-  { path: '**', redirectTo: '' }
+  { 
+    path: '', 
+    loadComponent: () => import('./pages/home-page/home-page').then(m => m.HomePage)
+  },
+  // Rotas futuras para projetos:
+  // { 
+  //   path: 'projeto/:id', 
+  //   loadComponent: () => import('./pages/projeto-detalhe/projeto-detalhe').then(m => m.ProjetoDetalhe)
+  // },
 ];

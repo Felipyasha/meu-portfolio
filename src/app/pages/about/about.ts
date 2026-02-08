@@ -57,7 +57,5 @@ export class About {
    * @constructor
    * Inicializa o componente About.
    */
-  constructor() {
-    console.log('🚀 About component carregado!');
-  }
+  constructor() {}
 }
