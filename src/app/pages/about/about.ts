@@ -29,27 +29,27 @@ export class About {
   readonly loreCards: LoreCard[] = [
     {
       id: '[01]',
-      title: 'CORE',
+      title: 'STACK CORE',
       content:
-        'Desenvolvedor Front-end focado em ecossistemas modernos, com especialidade em Angular e React. Especializado em criar soluções modernas e eficientes, aliando performance técnica com interfaces limpas e objetivas, garantindo valor real ao usuário final.',
+        'Desenvolvedor Front-end focado em ecossistemas modernos, com especialidade em Angular e React. Especializado em criar soluções eficientes que alinham performance técnica a interfaces limpas, garantindo modularidade e reaproveitamento de código através de bibliotecas de componentes e Design Systems para entregar valor real ao usuário final.',
     },
     {
       id: '[02]',
-      title: 'ESSÊNCIA',
+      title: 'TRAJETÓRIA',
       content:
-        'Minha essência vive no equilíbrio entre estética e funcionalidade, guiada por boas práticas e pela busca constante por performance. Transformo linhas de código em experiências fluidas, onde a precisão técnica ganha forma e eleva a usabilidade e o design responsivo, como magia na tela',
+        'Possuo experiência sólida no desenvolvimento de aplicações complexas e SPAs em grandes empresas como Lojas Marisa e Diebold Nixdorf. Minha atuação foca na criação de ferramentas estratégicas de ressarcimento e gerenciamento de filas, utilizando tecnologias como React, Angular e Ionic para integrar APIs RESTful, reduzir erros manuais e elevar a eficiência operacional através de soluções escaláveis.',
     },
     {
       id: '[03]',
       title: 'EVOLUÇÃO',
       content:
-        'Minha trajetória é marcada pela constante atualização técnica e pela transição fluida entre grandes ecossistemas. Busco evoluir a cada projeto, transformando desafios complexos em soluções escaláveis e mantendo o foco no que há de mais moderno no front-end.',
+        'Minha trajetória é marcada pela constante evolução técnica e pela transição fluida entre grandes ecossistemas. Participei de melhorias críticas que elevaram a performance e o SEO de aplicações em 35%, além de atuar com fluxos de CI/CD via Bitbucket e Bamboo. Busco aprimoramento constante e, no momento, foco na expansão do meu conhecimento em serviços AWS para construir soluções ainda mais integradas.',
     },
     {
       id: '[04]',
-      title: 'YASHA',
+      title: 'ESSÊNCIA',
       content:
-        'Fora do ambiente de desenvolvimento, encontro equilíbrio na música e nos games. Admirador da cena emo e de Taylor Swift, também dedico meu tempo ao cenário competitivo, onde a estratégia e a busca pela alta performance nos jogos refletem a mesma disciplina que aplico na construção do meu código.',
+        'Minha essência consiste em equilibrar estética e funcionalidade através de boas práticas e performance. Busco transformar linhas de código em experiências fluidas, onde a precisão técnica se manifesta, visualmente, como magia na tela. Fora do ambiente de desenvolvimento, encontro esse mesmo equilíbrio na música e nos games, onde a estratégia e a alta performance refletem a disciplina que aplico em cada projeto.',
     },
   ];
 

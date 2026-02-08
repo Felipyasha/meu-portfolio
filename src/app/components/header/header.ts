@@ -1,5 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, HostListener, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 /**
@@ -32,6 +32,8 @@ export class Header implements OnInit {
     { label: 'Contato', link: '#contact' },
   ];
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit(): void {
     // Detecta a seção ativa ao carregar a página
     this.updateActiveSection();
@@ -45,31 +47,36 @@ export class Header implements OnInit {
 
   /** @description Atualiza o item ativo baseado na seção visível */
   private updateActiveSection(): void {
-    const sections = this.navItems
-      .filter(item => item.link.startsWith('#') && item.link !== '#')
-      .map(item => ({
-        label: item.label,
-        element: document.getElementById(item.link.substring(1))
-      }))
-      .filter(section => section.element !== null);
+  // 1. Verificamos se estamos no navegador antes de acessar document ou window
+  if (!isPlatformBrowser(this.platformId)) {
+    return;
+  }
 
-    const scrollPosition = window.scrollY + 150; // offset para compensar o header
+  const sections = this.navItems
+    .filter(item => item.link.startsWith('#') && item.link !== '#')
+    .map(item => ({
+      label: item.label,
+      element: document.getElementById(item.link.substring(1))
+    }))
+    .filter(section => section.element !== null);
 
-    // Se estiver no topo da página
-    if (window.scrollY < 100) {
-      this.activeItem = 'Início';
+  const scrollPosition = window.scrollY + 150; // offset para compensar o header
+
+  // Se estiver no topo da página
+  if (window.scrollY < 100) {
+    this.activeItem = 'Início';
+    return;
+  }
+
+  // Encontra qual seção está visível
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = sections[i];
+    if (section.element && section.element.offsetTop <= scrollPosition) {
+      this.activeItem = section.label;
       return;
     }
-
-    // Encontra qual seção está visível
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = sections[i];
-      if (section.element && section.element.offsetTop <= scrollPosition) {
-        this.activeItem = section.label;
-        return;
-      }
-    }
   }
+}
 
   /** @description Inverte o estado do menu mobile */
   toggleMenu(): void {

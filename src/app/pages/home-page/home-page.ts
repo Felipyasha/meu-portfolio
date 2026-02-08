@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Home } from '../home/home';
 import { About } from '../about/about';
+import { Skills } from '../skills/skills';
+
 // Importe as outras seções conforme tiver
 
 @Component({
@@ -11,6 +13,7 @@ import { About } from '../about/about';
     CommonModule,
     Home,
     About,
+    Skills,
     // Adicione os outros aqui
   ],
   templateUrl: './home-page.html',

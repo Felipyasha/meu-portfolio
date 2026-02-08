@@ -6,14 +6,14 @@
       <h2
         class="text-white text-4xl md:text-5xl lg:text-6xl font-black uppercase italic leading-none"
       >
-        <span class="text-red-700">Lore</span>
+        <span class="text-red-700/80">Lore</span>
       </h2>
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       @for (card of loreCards; track card.id) {
         <article
-          class="group relative p-5 md:p-6 bg-white/10 backdrop-blur-md border border-white/5 hover:border-red-700/30 transition-all duration-300 hover:scale-102"
+          class="group relative p-5 md:p-6 bg-white/10 backdrop-blur-md border border-white/5 hover:border-red-700/30 transition-all duration-300 hover:scale-102 rounded-sm"
         >
           <div class="flex items-baseline gap-3 mb-2">
             <span class="text-red-700 font-mono text-[10px] font-bold">

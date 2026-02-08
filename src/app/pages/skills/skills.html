@@ -1,0 +1,54 @@
+<section
+  class="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden px-6 pb-10 md:pb-10 lg:pb-0"
+>
+  <div class="container mx-auto px-4 mt-25 md:mt-15">
+    <header class="mb-6 flex flex-col items-center md:items-start animate-fade-in">
+      <h2
+        class="text-white text-4xl md:text-5xl lg:text-6xl font-black uppercase italic leading-none"
+      >
+        <span class="text-red-700/80">Habilidades</span>
+      </h2>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      @for (card of skillCards; track card.title) {
+        <article
+          class="group relative p-6 md:p-8 bg-white/10 backdrop-blur-md border border-white/5 hover:border-red-700/40 transition-all duration-300 hover:-translate-y-3 shadow-2xl rounded-sm"
+        >
+          <div class="mb-6">
+            <h3
+              class="text-white text-2xl md:text-3xl font-bold tracking-tighter uppercase group-hover:text-red-700 transition-colors italic"
+            >
+              {{ card.title }}
+            </h3>
+          </div>
+
+          <div
+            class="flex flex-col gap-3 border-l-2 border-red-700/30 pl-6 group-hover:border-red-700 transition-colors min-w-max"
+          >
+            @for (skill of card.skills; track skill.name) {
+              <div
+                class="flex items-center gap-4 bg-white/5 px-4 py-2 border border-white/5 hover:bg-red-700/10 transition-all duration-200 group/item"
+              >
+                <i
+                  [class]="skill.icon"
+                  class="text-xl md:text-2xl text-white transition-all duration-300 group-hover/item:text-red-700 group-hover/item:drop-shadow-[0_0_8px_rgba(185,28,28,0.8)]"
+                ></i>
+
+                <span
+                  class="text-gray-200 text-sm md:text-base font-mono uppercase tracking-widest whitespace-nowrap"
+                >
+                  {{ skill.name }}
+                </span>
+              </div>
+            }
+          </div>
+
+          <div
+            class="absolute inset-0 -z-10 bg-linear-to-br from-red-700/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+          ></div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
