@@ -1,7 +1,13 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-
 
 export const routes: Routes = [
-  { path: '', component: Home }, // Rota principal carrega a página Home
+  { 
+    path: '', 
+    loadComponent: () => import('./pages/home-page/home-page').then(m => m.HomePage)
+  },
+  // Rotas futuras para projetos:
+  // { 
+  //   path: 'projeto/:id', 
+  //   loadComponent: () => import('./pages/projeto-detalhe/projeto-detalhe').then(m => m.ProjetoDetalhe)
+  // },
 ];

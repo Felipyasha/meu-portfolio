@@ -1,15 +1,19 @@
 /**
  * @file styles.css
  * @description Estilos globais e configurações de tema para Tailwind v4.
+ * Inclui animações personalizadas para identidade visual e efeitos de fundo.
  * @author Felipe Nascimento
- * @version 1.0.0
+ * @version 1.1.0
  */
 
- 
 @import "tailwindcss";
 
 @theme {
-  /* Definindo as Keyframes (o movimento) */
+  /**
+   * @section Keyframes
+   * @description Definições de movimentos para as animações do sistema.
+   */
+
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -30,9 +34,31 @@
     50% { background-position: 100% 50%; }
   }
 
-  /* Criando as classes utilitárias de animação */
+  /**
+   * @name blob
+   * @description Movimento orgânico tipo "lava lamp" para formas de fundo.
+   */
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(40px, -60px) scale(1.1); }
+    66% { transform: translate(-30px, 30px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  /**
+   * @section Animation Utilities
+   * @description Classes utilitárias geradas automaticamente pelo Tailwind v4.
+   */
   --animate-fade-in: fade-in 1s ease-out forwards;
   --animate-spin-slow: spin-slow 12s linear infinite;
   --animate-bounce-slow: bounce-slow 4s ease-in-out infinite;
   --animate-gradient: gradient 3s ease infinite;
+  --animate-blob: blob 10s ease-in-out infinite;
+}
+
+/**
+ * @section Global Base Styles
+ */
+html {
+  scroll-behavior: smooth;
 }
