@@ -27,8 +27,7 @@ export class Header implements OnInit {
     { label: 'Sobre', link: '#about' },
     { label: 'Habilidades', link: '#skills' },
     { label: 'Projetos', link: '#projects' },
-    { label: 'Experiência', link: '#expirience' },
-    { label: 'Formação', link: '#education' },
+    { label: 'Experiência', link: '#experience' },
     { label: 'Contato', link: '#contact' },
   ];
 
