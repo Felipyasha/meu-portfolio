@@ -1,1 +1,132 @@
-<p>project-detail works!</p>
+<section class="min-h-screen bg-transparent text-white pt-32 pb-20 px-6">
+  <div class="container mx-auto max-w-6xl">
+    <header class="mb-12 animate-fade-in">
+      <h1
+        class="text-4xl md:text-7xl font-black uppercase italic text-red-700/80 mb-6 leading-none"
+      >
+        {{ project()?.title }}
+      </h1>
+
+      <div class="flex flex-wrap gap-2 mb-8">
+        @for (tech of project()?.technologies; track tech) {
+          <span
+            class="text-[9px] font-mono uppercase tracking-widest px-2 py-1 bg-white/5 border border-white/10 text-gray-400"
+          >
+            {{ tech }}
+          </span>
+        }
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-2 space-y-10">
+        <article class="bg-white/10 backdrop-blur-md border border-white/5 p-8 rounded-sm">
+          <h3
+            class="text-xl font-bold uppercase italic mb-6 text-red-700 border-l-4 border-red-700/30 pl-4"
+          >
+            Sobre o Projeto
+          </h3>
+          <p class="text-gray-200 text-lg leading-relaxed mb-8">
+            {{ project()?.fullDescription }}
+          </p>
+
+          <h4 class="font-bold uppercase text-xs tracking-widest mb-6 text-white/50">
+            Principais Funcionalidades
+          </h4>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            @for (feature of project()?.features; track feature) {
+              <li class="flex items-start gap-3 text-sm text-gray-400 group">
+                <span class="text-red-700 font-bold">✓</span>
+                {{ feature }}
+              </li>
+            }
+          </ul>
+        </article>
+
+        <article class="bg-white/10 backdrop-blur-md border border-white/5 p-8 rounded-sm">
+          <h3
+            class="text-xl font-bold uppercase italic mb-10 text-red-700 border-l-4 border-red-700/30 pl-4"
+          >
+            Processo de Desenvolvimento
+          </h3>
+
+          <div
+            class="space-y-12 relative before:absolute before:inset-y-0 before:left-5 before:w-[1px] before:bg-white/10"
+          >
+            @for (step of project()?.processSteps; track $index) {
+              <div class="flex gap-8 items-start relative group">
+                <div
+                  class="flex-shrink-0 w-10 h-10 rounded-full bg-red-700 flex items-center justify-center font-black italic text-lg z-10 shadow-[0_0_20px_rgba(185,28,28,0.3)]"
+                >
+                  {{ $index + 1 }}
+                </div>
+
+                <div class="pt-1">
+                  <h4 class="text-white font-bold uppercase italic text-lg mb-2">
+                    {{ step.title }}
+                  </h4>
+                  <p class="text-gray-400 leading-relaxed text-sm">
+                    {{ step.description }}
+                  </p>
+                </div>
+              </div>
+            }
+          </div>
+        </article>
+
+        @if (project()?.gallery && project()?.gallery!.length > 0) {
+          <article class="bg-white/10 backdrop-blur-md border border-white/5 p-8 rounded-sm">
+            <h3 class="text-xl font-bold uppercase italic mb-8 text-red-700">Galeria</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              @for (img of project()?.gallery; track img) {
+                <div
+                  class="aspect-video bg-white/5 border border-white/10 rounded-sm overflow-hidden group"
+                >
+                  <img
+                    [src]="img"
+                    class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-500"
+                    alt="Screenshots"
+                  />
+                </div>
+              }
+            </div>
+          </article>
+        }
+      </div>
+
+      <aside class="space-y-6">
+        <div class="bg-white/10 border border-white/5 p-6 rounded-sm">
+          <p class="text-white/30 text-[10px] uppercase tracking-widest mb-4 font-bold">Status</p>
+          <div class="flex items-center gap-3 text-md font-bold uppercase italic">
+            <span
+              class="w-2.5 h-2.5 rounded-full animate-pulse"
+              [ngClass]="{
+                'bg-green-500 shadow-[0_0_10px_#22c55e]': project()?.status === 'Concluído',
+                'bg-yellow-500 shadow-[0_0_10px_#eab308]':
+                  project()?.status === 'Em desenvolvimento',
+              }"
+            ></span>
+
+            {{ project()?.status }}
+          </div>
+        </div>
+
+        <div class="bg-white/10 border border-white/5 p-6 rounded-sm">
+          <p class="text-white/30 text-[10px] uppercase tracking-widest mb-6 font-bold">
+            Informações
+          </p>
+          <div class="space-y-6">
+            <div>
+              <p class="text-red-700 text-[10px] font-black uppercase italic">Duração</p>
+              <p class="text-gray-300 text-sm font-bold">{{ project()?.duration }}</p>
+            </div>
+            <div>
+              <p class="text-red-700 text-[10px] font-black uppercase italic">Cliente / Empresa</p>
+              <p class="text-gray-300 text-sm font-bold">{{ project()?.client }}</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

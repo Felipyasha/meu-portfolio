@@ -9,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../../models/projects.interface';
 import { ProjectService } from '../../../services/project.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './project-list.html',
   styleUrl: './project-list.css',
 })
