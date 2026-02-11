@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { Project } from '../models/projects.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjectService {
   /** * @description Simulação de base de dados local para os projetos do portfólio.
@@ -18,31 +18,42 @@ export class ProjectService {
    */
   private readonly projects: Project[] = [
     {
-      id: '1',
-      title: 'Projeto Alpha',
-      thumbnail: 'assets/images/project1.jpg',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet',
-      fullDescription: 'Descrição completa e detalhada para a página de detalhes...',
-      technologies: ['Angular', 'TypeScript', 'Tailwind'],
-      githubUrl: 'https://github.com/seu-user/projeto-alpha'
-    },
-    {
-      id: '2',
-      title: 'Projeto Beta',
-      thumbnail: 'assets/images/project2.jpg',
-      description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-      fullDescription: 'Descrição completa e detalhada para a página de detalhes...',
-      technologies: ['React', 'Node.js', 'MySQL'],
-      githubUrl: 'https://github.com/seu-user/projeto-beta'
-    },
-    {
-      id: '3',
-      title: 'Projeto Gamma',
-      thumbnail: 'assets/images/project3.jpg',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-      fullDescription: 'Descrição completa e detalhada para a página de detalhes...',
-      technologies: ['Java', 'Spring Boot', 'AWS'],
-      githubUrl: 'https://github.com/seu-user/projeto-gamma'
+      id: 'portfolio',
+      title: 'Felipe "Yasha" Nasicmento',
+      thumbnail: 'assets/images/portfolio-thumb.jpg',
+      description:
+        'Desenvolvimento de uma Single Page Application de alta performance com Angular 19 e SSR.',
+      fullDescription:
+        'Meu portfólio vai além de uma simples página estática. É um projeto construído como se fosse para produção real. \nA base é Angular moderno com TypeScript em modo estrito, usando modelos tipados, signals para gerenciamento reativo, injeção de dependência moderna e lógica preparada para SSR. Isso garante código mais seguro, previsível e fácil de manter. \nA arquitetura segue boas práticas de engenharia: componentes standalone, serviços e modelos bem definidos, documentação com JSDoc e configuração de Vitest para testes. Também implementei lazy loading, SSR com Express, hidratação client-side, orçamentos de bundle e consumo de API para envio de emails, tudo pensando em performance, SEO e experiência do usuário. \nNo visual, uso Tailwind CSS v4, dark theme, animações personalizadas e glassmorphism para criar uma identidade moderna. Ao mesmo tempo, construí uma narrativa própria em torno de "Lore" e do conceito "S-Rank Archer Developer", conectando minha trajetória técnica de forma mais memorável. \nÉ esse equilíbrio entre código bem estruturado, práticas modernas de front-end e apresentação criativa que diferencia meu perfil no mercado.',
+      technologies: ['Angular 19', 'TypeScript', 'Tailwind CSS', 'SSR'],
+      githubUrl: 'https://github.com/Felipyasha/meu-portfolio',
+      status: 'Em desenvolvimento',
+      client: 'Projeto Pessoal',
+      duration: '1 mês',
+      features: [
+        'Navegação dinâmica com Angular Router',
+        'Renderização do lado do servidor (SSR) para SEO',
+        'Gestão de estado reativa com Signals',
+        'Layout adaptativo para dispositivos móveis e desktop',
+      ],
+      processSteps: [
+        {
+          title: 'Concepção e Design',
+          description:
+            'Definição da paleta de cores (Dark Theme com detalhes em Vermelho) e estrutura de Estudo de Caso (Case Study).',
+        },
+        {
+          title: 'Desenvolvimento Core',
+          description:
+            'Implementação do sistema de rotas e criação do serviço de dados centralizado para os projetos.',
+        },
+        {
+          title: 'Polimento e UX',
+          description:
+            'Ajuste fino de transições de página e tratamento de scroll para garantir fluidez na navegação.',
+        },
+      ],
+      gallery: ['assets/images/port-1.jpg', 'assets/images/port-2.jpg'],
     },
   ];
 
@@ -60,6 +71,6 @@ export class ProjectService {
    * @returns {Project | undefined} O objeto do projeto encontrado ou undefined caso não exista.
    */
   getProjectById(id: string): Project | undefined {
-    return this.projects.find(p => p.id === id);
+    return this.projects.find((p) => p.id === id);
   }
 }
