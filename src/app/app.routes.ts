@@ -4,13 +4,15 @@ import { ProjectDetail } from './pages/projects/project-detail/project-detail';
 export const routes: Routes = [
   { 
     path: '', 
-    loadComponent: () => import('./pages/home-page/home-page').then(m => m.HomePage)
+    loadComponent: () => import('./pages/home-page/home-page').then(m => m.HomePage),
+    data: { mostrarVoltar: false }
   },
 
   { 
     path: 'project/:id', 
     component: ProjectDetail,
-    title: 'Detalhes do Projeto' // Opcional: define o título da aba no navegador
+    title: 'Detalhes do Projeto',
+    data: { mostrarVoltar: true }
   },
   // Rotas futuras para projetos:
   // { 

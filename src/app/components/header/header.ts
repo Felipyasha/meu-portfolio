@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, OnInit, Inject, PLATFORM_ID, inject, signal } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 /**
  * @description
@@ -21,6 +22,9 @@ export class Header implements OnInit {
   /** @description Guarda o nome do item que está ativo no momento */
   activeItem: string = 'Início';
 
+  /** @description Controla se deve mostrar o botão voltar */
+  mostrarVoltar = signal(false);
+
   /** @description Itens de navegação */
   navItems = [
     { label: 'Início', link: '#' },
@@ -31,11 +35,38 @@ export class Header implements OnInit {
     { label: 'Contato', link: '#contact' },
   ];
 
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
     // Detecta a seção ativa ao carregar a página
     this.updateActiveSection();
+
+    // Atualiza os dados da rota na inicialização
+    this.atualizarDadosRota();
+
+    // Escuta mudanças de rota
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => this.atualizarDadosRota());
+  }
+
+  /** @description Atualiza os dados baseado na rota atual */
+  private atualizarDadosRota(): void {
+    let rota = this.route;
+    while (rota.firstChild) {
+      rota = rota.firstChild;
+    }
+    
+    const mostrar = rota.snapshot.data['mostrarVoltar'] || false;
+    this.mostrarVoltar.set(mostrar);
+  }
+
+  /** @description Volta para a página anterior */
+  voltar(): void {
+    this.router.navigate(['/']);
   }
 
   /** @description Detecta qual seção está visível no scroll */
@@ -46,36 +77,36 @@ export class Header implements OnInit {
 
   /** @description Atualiza o item ativo baseado na seção visível */
   private updateActiveSection(): void {
-  // 1. Verificamos se estamos no navegador antes de acessar document ou window
-  if (!isPlatformBrowser(this.platformId)) {
-    return;
-  }
-
-  const sections = this.navItems
-    .filter(item => item.link.startsWith('#') && item.link !== '#')
-    .map(item => ({
-      label: item.label,
-      element: document.getElementById(item.link.substring(1))
-    }))
-    .filter(section => section.element !== null);
-
-  const scrollPosition = window.scrollY + 150; // offset para compensar o header
-
-  // Se estiver no topo da página
-  if (window.scrollY < 100) {
-    this.activeItem = 'Início';
-    return;
-  }
-
-  // Encontra qual seção está visível
-  for (let i = sections.length - 1; i >= 0; i--) {
-    const section = sections[i];
-    if (section.element && section.element.offsetTop <= scrollPosition) {
-      this.activeItem = section.label;
+    // Verificamos se estamos no navegador antes de acessar document ou window
+    if (!isPlatformBrowser(this.platformId)) {
       return;
     }
+
+    const sections = this.navItems
+      .filter(item => item.link.startsWith('#') && item.link !== '#')
+      .map(item => ({
+        label: item.label,
+        element: document.getElementById(item.link.substring(1))
+      }))
+      .filter(section => section.element !== null);
+
+    const scrollPosition = window.scrollY + 150;
+
+    // Se estiver no topo da página
+    if (window.scrollY < 100) {
+      this.activeItem = 'Início';
+      return;
+    }
+
+    // Encontra qual seção está visível
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = sections[i];
+      if (section.element && section.element.offsetTop <= scrollPosition) {
+        this.activeItem = section.label;
+        return;
+      }
+    }
   }
-}
 
   /** @description Inverte o estado do menu mobile */
   toggleMenu(): void {

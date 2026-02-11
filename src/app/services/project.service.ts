@@ -18,13 +18,13 @@ export class ProjectService {
    */
   private readonly projects: Project[] = [
     {
-      id: 'portfolio-v3',
-      title: 'Portfolio Moderno v3',
+      id: 'portfolio',
+      title: 'Felipe "Yasha" Nasicmento',
       thumbnail: 'assets/images/portfolio-thumb.jpg',
       description:
         'Desenvolvimento de uma Single Page Application de alta performance com Angular 19 e SSR.',
       fullDescription:
-        'Criação de um portfolio técnico focado em experiência de usuário (UX) e design minimalista. O projeto utiliza as funcionalidades mais recentes do Angular, como Signals e Standalone Components, integrado ao Tailwind CSS para uma interface responsiva e moderna com efeitos de backdrop-blur e animações personalizadas.',
+        'Meu portfólio vai além de uma simples página estática. É um projeto construído como se fosse para produção real. \nA base é Angular moderno com TypeScript em modo estrito, usando modelos tipados, signals para gerenciamento reativo, injeção de dependência moderna e lógica preparada para SSR. Isso garante código mais seguro, previsível e fácil de manter. \nA arquitetura segue boas práticas de engenharia: componentes standalone, serviços e modelos bem definidos, documentação com JSDoc e configuração de Vitest para testes. Também implementei lazy loading, SSR com Express, hidratação client-side, orçamentos de bundle e consumo de API para envio de emails, tudo pensando em performance, SEO e experiência do usuário. \nNo visual, uso Tailwind CSS v4, dark theme, animações personalizadas e glassmorphism para criar uma identidade moderna. Ao mesmo tempo, construí uma narrativa própria em torno de "Lore" e do conceito "S-Rank Archer Developer", conectando minha trajetória técnica de forma mais memorável. \nÉ esse equilíbrio entre código bem estruturado, práticas modernas de front-end e apresentação criativa que diferencia meu perfil no mercado.',
       technologies: ['Angular 19', 'TypeScript', 'Tailwind CSS', 'SSR'],
       githubUrl: 'https://github.com/Felipyasha/meu-portfolio',
       status: 'Em desenvolvimento',
