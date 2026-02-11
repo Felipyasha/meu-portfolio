@@ -1,9 +1,9 @@
 export interface Skill {
-  name: string;
-  icon: string;
+  name?: string;
+  icon?: string;
 }
 
 export interface SkillCard {
-  title: string;
-  skills: Skill[];
+  title?: string;
+  skills?: Skill[];
 }

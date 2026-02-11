@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Home } from '../home/home';
 import { About } from '../about/about';
 import { Skills } from '../skills/skills';
+import { ProjectList } from '../projects/project-list/project-list';
+import { Experience } from '../experience/experience';
+import { Contact } from '../contact/contact';
+
+
 
 // Importe as outras seções conforme tiver
 
@@ -14,6 +19,10 @@ import { Skills } from '../skills/skills';
     Home,
     About,
     Skills,
+    ProjectList,
+    Experience,
+    Contact
+
     // Adicione os outros aqui
   ],
   templateUrl: './home-page.html',
