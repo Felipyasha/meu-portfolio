@@ -19,13 +19,13 @@ export class ProjectService {
   private readonly projects: Project[] = [
     {
       id: 'portfolio',
-      title: 'Felipe "Yasha" Nasicmento',
-      thumbnail: 'assets/images/portfolio-thumb.jpg',
+      title: 'Portfólio',
+      thumbnail: 'images/project-1/port-cover.PNG',
       description:
-        'Desenvolvimento de uma Single Page Application de alta performance com Angular 19 e SSR.',
+        'Desenvolvimento de uma Single Page Application de alta performance com Angular 19+ e Tailwind.',
       fullDescription:
         'Meu portfólio vai além de uma simples página estática. É um projeto construído como se fosse para produção real. \nA base é Angular moderno com TypeScript em modo estrito, usando modelos tipados, signals para gerenciamento reativo, injeção de dependência moderna e lógica preparada para SSR. Isso garante código mais seguro, previsível e fácil de manter. \nA arquitetura segue boas práticas de engenharia: componentes standalone, serviços e modelos bem definidos, documentação com JSDoc e configuração de Vitest para testes. Também implementei lazy loading, SSR com Express, hidratação client-side, orçamentos de bundle e consumo de API para envio de emails, tudo pensando em performance, SEO e experiência do usuário. \nNo visual, uso Tailwind CSS v4, dark theme, animações personalizadas e glassmorphism para criar uma identidade moderna. Ao mesmo tempo, construí uma narrativa própria em torno de "Lore" e do conceito "S-Rank Archer Developer", conectando minha trajetória técnica de forma mais memorável. \nÉ esse equilíbrio entre código bem estruturado, práticas modernas de front-end e apresentação criativa que diferencia meu perfil no mercado.',
-      technologies: ['Angular 19', 'TypeScript', 'Tailwind CSS', 'SSR'],
+      technologies: ['Angular 19+', 'TypeScript', 'Tailwind CSS', 'SSR'],
       githubUrl: 'https://github.com/Felipyasha/meu-portfolio',
       status: 'Em desenvolvimento',
       client: 'Projeto Pessoal',
@@ -53,7 +53,7 @@ export class ProjectService {
             'Ajuste fino de transições de página e tratamento de scroll para garantir fluidez na navegação.',
         },
       ],
-      gallery: ['assets/images/port-1.jpg', 'assets/images/port-2.jpg'],
+      gallery: ['images/project-1/1.PNG', 'images/project-1/2.PNG', 'images/project-1/3.PNG', 'images/project-1/4.PNG'],
     },
   ];
 
