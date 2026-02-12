@@ -35,19 +35,19 @@ export class Home implements OnInit, OnDestroy {
       firstName: 'Felipe',
       lastName: 'Nascimento Alves',
       bio: 'Onde o abstrato ganha forma. Transformo ideias em experiências reais.',
-      image: '/images/felipyasha_human_home.png',
+      image: 'images/felipyasha_human_home.png',
     },
     {
       role: 'S-Rank Archer Developer',
       greeting: 'Liberar...',
       firstName: {
         type: 'image',
-        src: '/images/felipyasha_header.png',
+        src: 'images/felipyasha_header.png',
         alt: 'Youkai Logo',
       },
       lastName: 'All the code on one arrow',
       bio: 'Precisão de mestre, performance letal. O alvo é a fluidez absoluta.',
-      image: '/images/felipyasha_youkai_home.png',
+      image: 'images/felipyasha_youkai_home.png',
     },
   ];
 
@@ -132,7 +132,7 @@ export class Home implements OnInit, OnDestroy {
   public downloadCV(): void {
     const link = document.createElement('a');
   // Adicionamos a / para garantir que ele busque na raiz do site
-  link.href = '/docs/Felipe_Nascimento_DevFront_CV.pdf'; 
+  link.href = 'docs/Felipe_Nascimento_DevFront_CV.pdf'; 
   link.download = 'Felipe_Nascimento_DevFront_CV.pdf';
   
   // Adicionamos ao corpo do documento (necessário em alguns navegadores)
