@@ -1,18 +1,16 @@
-<div class="fixed inset-0 -z-10 bg-black overflow-hidden pointer-events-none">
-  <div
-    class="absolute top-[15%] right-[5%] w-80 h-80 bg-red-700/20 rounded-full blur-[80px] animate-blob"
-  ></div>
-
-  <div
-    class="absolute bottom-[20%] left-[10%] w-64 h-64 bg-red-700/15 rounded-full blur-[60px] animate-blob"
-    style="animation-delay: 2s"
-  ></div>
+<div class="fixed inset-0 -z-10 bg-black overflow-hidden pointer-events-none select-none">
+  <div class="absolute top-[15%] right-[5%] size-80 bg-red-700/20 rounded-full blur-[80px] animate-blob"></div>
+  <div class="absolute bottom-[20%] left-[10%] size-64 bg-red-700/15 rounded-full blur-[60px] animate-blob" style="animation-delay: 2s"></div>
 </div>
 
-<app-header></app-header>
-<div class="flex flex-col min-h-screen">
-  <main class="">
+<div class="flex flex-col min-h-dvh">
+  
+  <app-header></app-header>
+
+  <main class="flex-1">
     <router-outlet></router-outlet>
   </main>
+
+  <app-footer></app-footer>
+
 </div>
-<app-footer></app-footer>
