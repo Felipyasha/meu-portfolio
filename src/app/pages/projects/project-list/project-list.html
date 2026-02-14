@@ -15,12 +15,8 @@
         <article
           class="group relative bg-white/10 backdrop-blur-md border border-white/5 hover:border-red-700/30 transition-all duration-500 rounded-sm overflow-hidden flex flex-col"
         >
-          <div class="border-b border-white/5">
-           <img
-            [src]="project.thumbnail"
-            alt="Logo da marca"
-            class=""
-          />
+          <div class="w-[390px] h-[96px] border-b border-white/5 overflow-hidden">
+            <img [src]="project.thumbnail" alt="Logo da marca" class="w-full h-full object-cover" />
           </div>
 
           <div class="p-6 grow">
