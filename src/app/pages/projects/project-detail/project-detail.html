@@ -45,7 +45,8 @@
           </ul>
         </article>
 
-        <article class="bg-white/10 backdrop-blur-md border border-white/5 p-8 rounded-sm">
+        @if (project()?.processSteps){
+          <article class="bg-white/10 backdrop-blur-md border border-white/5 p-8 rounded-sm">
           <h3
             class="text-xl font-bold uppercase italic mb-10 text-red-700 border-l-4 border-red-700/30 pl-4"
           >
@@ -75,6 +76,7 @@
             }
           </div>
         </article>
+        }
 
         @if (project()?.gallery && project()?.gallery!.length > 0) {
           <article class="bg-white/10 backdrop-blur-md border border-white/5 p-8 rounded-sm">
