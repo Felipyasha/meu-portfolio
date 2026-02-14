@@ -61,4 +61,11 @@
  */
 html {
   scroll-behavior: smooth;
+  background: #000;
+}
+
+body {
+  background: transparent; /* explicitamente transparente */
+  overflow-x: hidden;
+  min-height: 100vh;
 }
